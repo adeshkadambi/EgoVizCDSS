@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/egoviz-cdss",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
