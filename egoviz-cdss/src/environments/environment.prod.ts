@@ -6,7 +6,8 @@ export const environment = {
     databaseURL: "https://egoviz.firebaseio.com",
     projectId: "egoviz",
     storageBucket: "egoviz.appspot.com",
-    messagingSenderId: "1:893270688549:web:792b8595bac88e2433d0cc",
-    appId: '[WEB_APP_ID]'
+    messagingSenderId: "893270688549",
+    appId: "1:893270688549:web:792b8595bac88e2433d0cc",
+    measurementId: "G-V9BP3Y2N3Z"
   }
 };

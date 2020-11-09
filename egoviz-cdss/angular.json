@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "egoviz-cdss"
+  "defaultProject": "egoviz-cdss",
+  "cli": {
+    "analytics": false
+  }
 }
