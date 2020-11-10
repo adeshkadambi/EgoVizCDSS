@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyAs08qe9PpkYFjOyej7a7qfdfYpwdbboFg",
-    authDomain: "egoviz.firebaseapp.com",
-    databaseURL: "https://egoviz.firebaseio.com",
-    projectId: "egoviz",
-    storageBucket: "egoviz.appspot.com",
-    messagingSenderId: "893270688549",
-    appId: "1:893270688549:web:792b8595bac88e2433d0cc",
-    measurementId: "G-V9BP3Y2N3Z"
+    apiKey: "AIzaSyAVoXdLyWFKenxBijGP8imBjrtGMPnOZ7o",
+    authDomain: "egoviz1.firebaseapp.com",
+    databaseURL: "https://egoviz1.firebaseio.com",
+    projectId: "egoviz1",
+    storageBucket: "egoviz1.appspot.com",
+    messagingSenderId: "628838580150",
+    appId: "1:628838580150:web:f075c94e61ba72a702cb17",
+    measurementId: "G-Y7NE5RQ4YH"
   }
 };
 

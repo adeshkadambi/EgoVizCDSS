@@ -1,14 +1,5 @@
 {
   "projects": {
-    "default": "egoviz"
-  },
-  "targets": {
-    "egoviz": {
-      "hosting": {
-        "egoviz-cdss": [
-          "egoviz"
-        ]
-      }
-    }
+    "default": "egoviz1"
   }
 }
