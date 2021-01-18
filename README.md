@@ -8,7 +8,7 @@ Processed videos and insights will also be stored in Google Cloud Firestore, a f
 `/patients`\
 `-- alphanumeric (string)`\
 `-- description (string)`\
-`-- therapist (string)`\
+`-- videos (array)`\
 \
 `/therapists`\
 `-- name (string)`\
