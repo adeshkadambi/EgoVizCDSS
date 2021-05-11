@@ -15,7 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { SummaryComponent } from './dashboard/profile/summary/summary.component';
 import { VideosComponent } from './dashboard/profile/videos/videos.component';
-
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { VideosComponent } from './dashboard/profile/videos/videos.component';
     DashboardComponent,
     ProfileComponent,
     SummaryComponent,
-    VideosComponent
+    VideosComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
