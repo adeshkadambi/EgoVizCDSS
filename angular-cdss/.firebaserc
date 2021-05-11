@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ego-vision": {
+      "hosting": {
+        "angular-cdss": [
+          "ego-vision"
+        ]
+      }
+    }
+  }
+}

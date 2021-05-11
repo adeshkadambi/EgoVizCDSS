@@ -1,0 +1,19 @@
+<section class='signup-form'>
+    <form 
+        fxLayout='column'
+        fxLayoutAlign='center center'
+        fxLayoutGap='10px' 
+        [formGroup]= 'signupForm'  
+        (ngSubmit)='onSubmit()'>
+        <h1>Sign Up</h1>
+        <mat-form-field>
+            <input type="email" matInput placeholder="Your Email" formControlName="email" required>
+        </mat-form-field>
+        <mat-form-field hintLabel="Minimum {{ this.minPw }} characters.">
+            <input type="password" matInput placeholder="Your Password" formControlName="password" required>
+            <mat-error>Missing or Invalid Password.</mat-error>
+        </mat-form-field>    
+        <button mat-raised-button color='primary' [disabled]="signupForm.invalid">Submit</button>
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active" class="navitem">Already have an Account?</a>
+    </form>
+</section>
