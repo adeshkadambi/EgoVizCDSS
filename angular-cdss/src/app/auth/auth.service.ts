@@ -19,7 +19,6 @@ export class AuthService {
         this.afAuth
             .createUserWithEmailAndPassword(authData.email, authData.password)
             .then(result => {
-                console.log(result);
                 this.authSuccess();
             })
             .catch(error => {
@@ -31,7 +30,6 @@ export class AuthService {
         this.afAuth
             .signInWithEmailAndPassword(authData.email, authData.password)
             .then(result => {
-                console.log(result);
                 this.authSuccess();
                 this.isAuthenticated = true;
             })
