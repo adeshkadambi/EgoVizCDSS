@@ -21,6 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientComponent } from './dashboard/patient/patient.component';
 import { ReportsComponent } from './dashboard/patient/reports/reports.component';
 import { VideosComponent } from './dashboard/patient/videos/videos.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { VideosComponent } from './dashboard/patient/videos/videos.component';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
+    NgxChartsModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),

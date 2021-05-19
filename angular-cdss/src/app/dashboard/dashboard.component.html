@@ -2,7 +2,7 @@
     <app-patient *ngIf="!selectedPatient"></app-patient>
 </section>
 
-<section class="patient-profile" *ngIf="selectedPatient">
+<section class="patient-profile" *ngIf="selectedPatient" fxLayout="column">
     <!-- <button mat-button (click)="checkPatient()">CHECK PATIENT</button> -->
     <div fxLayout="column" >
         <button mat-icon-button (click)="goBack()" fxLayoutAlign="start center">
@@ -13,9 +13,9 @@
         <h3 fxLayoutAlign="center center">{{ currentPatient.id }}</h3>
     </div>
     
-    <mat-tab-group *ngIf="selectedPatient">
+    <mat-tab-group *ngIf="selectedPatient" mat-stretch-tabs mat-align-tabs="center" animationDuration="1000ms">
         <mat-tab label="Reports">
-            <app-reports></app-reports>
+            <app-reports fxLayoutAlign="center center"></app-reports>
         </mat-tab>
         <mat-tab label="Videos">
             <app-videos></app-videos>
