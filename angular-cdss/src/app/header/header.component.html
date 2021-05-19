@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+    <div>
+        <a [routerLink]="['/']" routerLinkActive="router-link-active" class="navitem-icon">
+            <mat-icon>api</mat-icon>
+            <span class="nav-cap">EGOVISION</span>
+        </a>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="flex-end">
+        <a *ngIf="!isAuth" [routerLink]="['/signup']" routerLinkActive="router-link-active" class="navitem-icon">
+            <mat-icon>person_add</mat-icon>
+            <span class="nav-cap">Sign Up</span>
+        </a>
+        <a *ngIf="!isAuth" [routerLink]="['/login']" routerLinkActive="router-link-active" class="navitem-icon">
+            <mat-icon>login</mat-icon>
+            <span class="nav-cap">Login</span>
+        </a>
+        <a *ngIf="isAuth" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" class="navitem-icon">
+            <mat-icon>dashboard</mat-icon>
+            <span class="nav-cap">Dashboard</span>
+        </a>
+        <a *ngIf="isAuth" (click)="onLogout()" class="navitem-icon">
+            <mat-icon>logout</mat-icon>
+            <span class="nav-cap">Logout</span>
+        </a>
+    </div>
+</mat-toolbar>
