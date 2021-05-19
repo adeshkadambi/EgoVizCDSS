@@ -1,3 +1,4 @@
+import { PatientService } from './dashboard/patient.service';
 import { AuthService } from './auth/auth.service';
 import { MaterialModule } from './material.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -45,7 +46,7 @@ import { VideosComponent } from './dashboard/patient/videos/videos.component';
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

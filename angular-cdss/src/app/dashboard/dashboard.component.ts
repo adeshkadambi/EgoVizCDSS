@@ -1,47 +1,44 @@
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Component, OnInit } from '@angular/core';
 import { Patient } from './patient.model';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { PatientService } from './patient.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
-  patients: Observable<Patient[]>;
-  userId: string;
+  selectedPatient = false;
+  patientSub: Subscription;
+  currentPatient:Patient;
 
-  constructor(private db:AngularFirestore, private afAuth: AngularFireAuth) {}
+  constructor(private patientService:PatientService) {}
 
   ngOnInit(): void {
-
-    this.afAuth.authState.subscribe(user => {
-      if(user) {
-        this.userId = user.uid;
-      }
+    this.patientSub = this.patientService.patientChanged.subscribe(
+      patient => {
+        if (patient) {
+          this.selectedPatient = true;
+          this.currentPatient = this.patientService.getCurrent();
+        } else {
+          this.selectedPatient = false;
+        }
     });
-
-    // Without timeout, usedId is undefined when query runs.
-    setTimeout(()=> {
-      this.patients= this.db
-      .collection('patients', ref => ref.where("uid", '==', this.userId))
-      .snapshotChanges()
-      .pipe(map(docArray => {
-        // get all patients and map to Patient model.
-        return docArray.map(doc => {
-          return {
-            id: doc.payload.doc.id,
-            age: doc.payload.doc.data()['age'],
-            name: doc.payload.doc.data()['name'],
-            description: doc.payload.doc.data()['description'],
-            doctor: doc.payload.doc.data()['uid']
-          }
-        })
-      }));
-    }, 100);
   }
+
+  checkPatient(){
+    console.log(this.patientService.getCurrent());
+  }
+
+  goBack(){
+    this.patientService.exitPatient();
+  }
+
+  ngOnDestroy() {
+    this.patientService.exitPatient();
+    this.patientSub.unsubscribe();
+  }
+
 }

@@ -1,16 +1,25 @@
-<section class="patient-card" fxLayout fxLayoutAlign="center">
-      <mat-card fxFlex="300px" *ngFor="let patient of patients | async">
-          <mat-card-title fxLayoutAlign="left">{{ patient.name }}</mat-card-title>
-          <mat-card-subtitle fxLayoutAlign="left">ID: {{ patient.id }}</mat-card-subtitle>
-          <mat-card-content fxLayoutAlign="left">
-            <p>
-                <strong>Age:</strong> {{ patient.age }} <br>
-                <strong>Description:</strong> {{ patient.description }}
-            </p>
-          </mat-card-content>
-          <mat-card-actions fxLayoutAlign="end">
-              <button mat-button>VIEW REPORTS</button>
-          </mat-card-actions>
-      </mat-card>
-  </section>
-  
+<section class="patient-cards">
+    <app-patient *ngIf="!selectedPatient"></app-patient>
+</section>
+
+<section class="patient-profile" *ngIf="selectedPatient">
+    <!-- <button mat-button (click)="checkPatient()">CHECK PATIENT</button> -->
+    <div fxLayout="column" >
+        <button mat-icon-button (click)="goBack()" fxLayoutAlign="start center">
+            <mat-icon>chevron_left</mat-icon>
+            <span class="nav-cap">Back</span>
+        </button>
+
+        <h3 fxLayoutAlign="center center">{{ currentPatient.id }}</h3>
+    </div>
+    
+    <mat-tab-group *ngIf="selectedPatient">
+        <mat-tab label="Reports">
+            <app-reports></app-reports>
+        </mat-tab>
+        <mat-tab label="Videos">
+            <app-videos></app-videos>
+        </mat-tab>
+    </mat-tab-group>
+</section>
+

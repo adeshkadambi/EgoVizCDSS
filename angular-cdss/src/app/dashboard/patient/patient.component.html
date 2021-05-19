@@ -1,1 +1,15 @@
-<p>patient works!</p>
+<section class="patient-card" fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex="300px" *ngFor="let patient of patients">
+        <mat-card-title fxLayoutAlign="left">{{ patient.name }}</mat-card-title>
+        <mat-card-subtitle fxLayoutAlign="left">ID: {{ patient.id }}</mat-card-subtitle>
+        <mat-card-content fxLayoutAlign="left">
+          <p>
+              <strong>Age:</strong> {{ patient.age }} <br>
+              <strong>Description:</strong> {{ patient.description }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="end">
+            <button mat-button (click)="onPatientClick(patient.id)">VIEW REPORTS</button>
+        </mat-card-actions>
+    </mat-card>
+</section>
