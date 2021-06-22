@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HeaderComponent } from './header/header.component';
@@ -22,6 +23,7 @@ import { PatientComponent } from './dashboard/patient/patient.component';
 import { ReportsComponent } from './dashboard/patient/reports/reports.component';
 import { VideosComponent } from './dashboard/patient/videos/videos.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     DashboardComponent,
     PatientComponent,
     ReportsComponent,
-    VideosComponent
+    VideosComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HttpClientModule
   ],
   providers: [AuthService, PatientService],
   bootstrap: [AppComponent]

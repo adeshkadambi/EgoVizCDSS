@@ -18,6 +18,10 @@
             <mat-icon>dashboard</mat-icon>
             <span class="nav-cap">Dashboard</span>
         </a>
+        <a *ngIf="isAuth" [routerLink]="['/upload']" routerLinkActive="router-link-active" class="navitem-icon">
+            <mat-icon>cloud_upload</mat-icon>
+            <span class="nav-cap">Upload</span>
+        </a>
         <a *ngIf="isAuth" (click)="onLogout()" class="navitem-icon">
             <mat-icon>logout</mat-icon>
             <span class="nav-cap">Logout</span>

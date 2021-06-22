@@ -64,3 +64,9 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# VS Code settings
+.vscode/
+
+# Auto-generated npm packages
+package-lock.json
