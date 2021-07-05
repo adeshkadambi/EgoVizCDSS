@@ -1,0 +1,21 @@
+ninja_required_version = 1.3
+cxx = cl
+
+cflags = /nologo /Ox /W3 /GL /DNDEBUG /MD /MD /wd4819 /wd4251 /wd4244 /wd4267 /wd4275 /wd4018 /wd4190 /EHsc -ID:\Documents\Lab2\Repos\EgoVizCDSS\hand_obj\lib\model\csrc -IC:\Users\Nick\anaconda3\envs\handobj\lib\site-packages\torch\include -IC:\Users\Nick\anaconda3\envs\handobj\lib\site-packages\torch\include\torch\csrc\api\include -IC:\Users\Nick\anaconda3\envs\handobj\lib\site-packages\torch\include\TH -IC:\Users\Nick\anaconda3\envs\handobj\lib\site-packages\torch\include\THC -IC:\Users\Nick\anaconda3\envs\handobj\include -IC:\Users\Nick\anaconda3\envs\handobj\include "-IC:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" "-IC:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" "-IC:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" "-IC:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" "-IC:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" "-IC:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"
+post_cflags = -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=_C -D_GLIBCXX_USE_CXX11_ABI=0 /std:c++14
+ldflags = 
+
+rule compile
+  command = cl /showIncludes $cflags -c $in /Fo$out $post_cflags
+  deps = msvc
+
+
+
+build D$:\Documents\Lab2\Repos\EgoVizCDSS\hand_obj\lib\build\temp.win-amd64-3.6\Release\Documents\Lab2\Repos\EgoVizCDSS\hand_obj\lib\model\csrc\vision.obj: compile D$:\Documents\Lab2\Repos\EgoVizCDSS\hand_obj\lib\model\csrc\vision.cpp
+build D$:\Documents\Lab2\Repos\EgoVizCDSS\hand_obj\lib\build\temp.win-amd64-3.6\Release\Documents\Lab2\Repos\EgoVizCDSS\hand_obj\lib\model\csrc\cpu\nms_cpu.obj: compile D$:\Documents\Lab2\Repos\EgoVizCDSS\hand_obj\lib\model\csrc\cpu\nms_cpu.cpp
+build D$:\Documents\Lab2\Repos\EgoVizCDSS\hand_obj\lib\build\temp.win-amd64-3.6\Release\Documents\Lab2\Repos\EgoVizCDSS\hand_obj\lib\model\csrc\cpu\ROIAlign_cpu.obj: compile D$:\Documents\Lab2\Repos\EgoVizCDSS\hand_obj\lib\model\csrc\cpu\ROIAlign_cpu.cpp
+
+
+
+
+
