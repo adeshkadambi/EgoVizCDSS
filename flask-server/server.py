@@ -12,6 +12,7 @@ app = Flask(__name__)
 CORS(app)
 
 # == Global Variables ==
+UPLOAD_FOLDER = os.path.abspath(r'D:\Documents\Lab2\Practice\testProj2\FlaskServer\Upload') 
 MODELPATH = os.path.abspath(r'Model-20-0.6544-0.7271.hdf5')
 ALLOWED_EXTENSIONS = {'jpg', 'png'}
 IMG_SIZE = [224, 224]

@@ -367,10 +367,7 @@ if __name__ == '__main__':
                 obj_dets = cls_dets.cpu().numpy()
               if pascal_classes[j] == 'hand':
                 hand_dets = cls_dets.cpu().numpy()
-
-        if ((obj_dets is not None) and (hand_dets is not None)):
-          print("obj_dets: " + str(obj_dets[:,4]))
-          print("hand_dets: " + str(hand_dets[:,4]))
+              
         if vis:
           # visualization
           im2show = vis_detections_filtered_objects_PIL(im2show, obj_dets, hand_dets, thresh_hand, thresh_obj)

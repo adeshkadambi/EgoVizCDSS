@@ -1,7 +1,10 @@
 setup.py
-/mnt/d/Documents/Lab2/Repos/EgoVizCDSS/hand_obj/lib/model/csrc/vision.cpp
-/mnt/d/Documents/Lab2/Repos/EgoVizCDSS/hand_obj/lib/model/csrc/cpu/ROIAlign_cpu.cpp
-/mnt/d/Documents/Lab2/Repos/EgoVizCDSS/hand_obj/lib/model/csrc/cpu/nms_cpu.cpp
+/home/adesh/github/hand_object_detector/lib/model/csrc/vision.cpp
+/home/adesh/github/hand_object_detector/lib/model/csrc/cpu/ROIAlign_cpu.cpp
+/home/adesh/github/hand_object_detector/lib/model/csrc/cpu/nms_cpu.cpp
+/home/adesh/github/hand_object_detector/lib/model/csrc/cuda/ROIAlign_cuda.cu
+/home/adesh/github/hand_object_detector/lib/model/csrc/cuda/ROIPool_cuda.cu
+/home/adesh/github/hand_object_detector/lib/model/csrc/cuda/nms.cu
 datasets/__init__.py
 datasets/coco.py
 datasets/ds_utils.py

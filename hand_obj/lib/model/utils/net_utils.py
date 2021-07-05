@@ -110,8 +110,6 @@ def vis_detections_filtered_objects_PIL(im, obj_dets, hand_dets, thresh_hand=0.8
         for obj_idx, i in enumerate(range(np.minimum(10, obj_dets.shape[0]))):
             bbox = list(int(np.round(x)) for x in obj_dets[i, :4])
             score = obj_dets[i, 4]
-            print("OBJ Score: " + str(score))
-            print("Thresh obj: " + str(thresh_obj))
             if score > thresh_obj and i in img_obj_id:
                 # viz obj by PIL
                 image = draw_obj_mask(image, draw, obj_idx, bbox, score, width, height, font)
@@ -121,8 +119,6 @@ def vis_detections_filtered_objects_PIL(im, obj_dets, hand_dets, thresh_hand=0.8
             score = hand_dets[i, 4]
             lr = hand_dets[i, -1]
             state = hand_dets[i, 5]
-            print("HAND Score: " + str(score))
-            print("Thresh hand: " + str(thresh_hand))
             if score > thresh_hand:
                 # viz hand by PIL
                 image = draw_hand_mask(image, draw, hand_idx, bbox, score, lr, state, width, height, font)
