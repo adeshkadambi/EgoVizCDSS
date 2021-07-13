@@ -36,7 +36,7 @@ def WeatherReport():
     return 
 
 # Upload + predict function
-@app.route("/uploadpredict/", methods=['GET', 'POST'])
+@app.route("/uploadpredictAB/", methods=['GET', 'POST'])
 def UploadPredict():
     file = request.files['input_file']
     # Save input file to disk

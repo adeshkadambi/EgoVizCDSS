@@ -1,10 +1,10 @@
-<section class='upload-form'>
+<section class='upload-AB-form'>
     <form 
         fxLayout="column" 
         fxLayoutAlign="center center" 
         fxLayoutGap='10px'
         [formGroup]="upForm"
-        (ngSubmit)="onSubmit()">
+        (ngSubmit)="onSubmit_AB()">
         <h1>Upload Image File:</h1>
 		<input
 			formControlName="file"
@@ -22,14 +22,59 @@
 		</div>
     </form>
 
-	<div *ngIf="submitted"
+	<div *ngIf="submitted_AB"
 		fxLayout="column"
 		fxLayoutAlign="cener center">
 		<br>
 		<h3>Prediction:</h3>
 		<!-- Interaction is determined by model response > 80%. -->
-		<div *ngIf="response_received; else loading">
-			<h4 *ngIf="predictions[0]>0.8; else noInt">Interaction detected!</h4>
+		<div *ngIf="response_received_AB; else loading">
+			<h4 *ngIf="predictions_AB[0]>0.8; else noInt">Interaction detected!</h4>
+		</div>
+	</div>
+	
+	<ng-template #noInt>
+		No Interaction detected.
+	</ng-template>
+	<ng-template #loading>
+		Loading response...
+	</ng-template>
+</section>
+<section class='upload-DF-form'>
+    <form 
+        fxLayout="column" 
+        fxLayoutAlign="center center" 
+        fxLayoutGap='10px'
+        [formGroup]="upForm"
+        (ngSubmit)="onSubmit_DF()">
+        <h1>Upload Video File:</h1>
+		<input
+			formControlName="file"
+			id="input_file"
+			name="input_file"
+			type="file"
+			class="form-control"
+			(change)="onFileChange($event)"
+			required>
+		<div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+			<div *ngIf="f.file.errors!.required">File is required</div>
+		</div>
+		<div>
+        	<button mat-raised-button color='primary' [disabled]="upForm.invalid" type="submit">Submit</button>
+		</div>
+    </form>
+
+	<div *ngIf="submitted_DF"
+		fxLayout="column"
+		fxLayoutAlign="cener center">
+		<br>
+		<h3>Video Metrics:</h3>
+		<!-- Interaction is determined by model response > 80%. -->
+		<div *ngIf="response_received_DF; else loading">
+			<h4>Percentage of left hand presence in video: {{predictions_DF.L}}%</h4>
+			<h4>Percentage of right hand presence in video: {{predictions_DF.R}}%</h4>
+			<h4>Percentage of both hands presence in video: {{predictions_DF.B}}%</h4>
+			<h4>Percentage of no hand presence in video: {{predictions_DF.Empty}}%</h4>
 		</div>
 	</div>
 	

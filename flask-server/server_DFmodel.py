@@ -30,16 +30,23 @@ def get_hand_presence(pred_result):
 	num_empty = 0
 	num_R = 0
 	num_L = 0
+	num_B = 0
 	for result in pred_result:
 		if not result:
 			num_empty += 1
 		else:
+			num_hands = 0
 			for hand in result:
 				if (hand['label'] == 'R'):
 					num_R += 1
+					num_hands += 1
 				elif (hand['label'] == 'L'):
 					num_L += 1
-	hand_presence = {'L':(num_L/num_frames), 'R':(num_R/num_frames), 'Empty':(num_empty/num_frames),
+					num_hands += 1
+			if num_hands == 2:
+				num_B += 1	# Both hands in frame
+	hand_presence = {'L':np.round((num_L/num_frames)*100, 1), 'R':np.round((num_R/num_frames)*100, 1), 
+					'Empty':np.round((num_empty/num_frames)*100, 1), 'B':np.round((num_B/num_frames)*100, 1),
 					'num_L':num_L, 'num_R':num_R, 'num_empty':num_empty, 'frames':num_frames}
 	return(hand_presence)
 
@@ -57,7 +64,7 @@ def home():
 	return "Welcome to the app"
 
 # Upload + predict function
-@app.route("/uploadpredict/", methods=['GET', 'POST'])
+@app.route("/uploadpredictDF/", methods=['GET', 'POST'])
 def UploadPredict():
 	file = request.files['input_file']
     # Save input file to disk (temporary)
