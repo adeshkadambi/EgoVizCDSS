@@ -24,7 +24,7 @@
 
 	<div *ngIf="submitted_AB"
 		fxLayout="column"
-		fxLayoutAlign="cener center">
+		fxLayoutAlign="center center">
 		<br>
 		<h3>Prediction:</h3>
 		<!-- Interaction is determined by model response > 80%. -->
@@ -36,9 +36,6 @@
 	<ng-template #noInt>
 		No Interaction detected.
 	</ng-template>
-	<ng-template #loading>
-		Loading response...
-	</ng-template>
 </section>
 <section class='upload-DF-form'>
     <form 
@@ -47,7 +44,8 @@
         fxLayoutGap='10px'
         [formGroup]="upForm"
         (ngSubmit)="onSubmit_DF()">
-        <h1>Upload Video File:</h1>
+		<h1>Yolov2 Hand Detection Model</h1>
+        <h2>Upload Video File:</h2>
 		<input
 			formControlName="file"
 			id="input_file"
@@ -66,10 +64,9 @@
 
 	<div *ngIf="submitted_DF"
 		fxLayout="column"
-		fxLayoutAlign="cener center">
+		fxLayoutAlign="center center">
 		<br>
 		<h3>Video Metrics:</h3>
-		<!-- Interaction is determined by model response > 80%. -->
 		<div *ngIf="response_received_DF; else loading">
 			<h4>Percentage of left hand presence in video: {{predictions_DF.L}}%</h4>
 			<h4>Percentage of right hand presence in video: {{predictions_DF.R}}%</h4>
@@ -78,10 +75,60 @@
 		</div>
 	</div>
 	
-	<ng-template #noInt>
-		No Interaction detected.
-	</ng-template>
-	<ng-template #loading>
-		Loading response...
-	</ng-template>
 </section>
+<section class='upload-HO-form'>
+    <form 
+        fxLayout="column" 
+        fxLayoutAlign="center center" 
+        fxLayoutGap='10px'
+        [formGroup]="upForm"
+        (ngSubmit)="onSubmit_HO()">
+		<h1>Hand Object Detector Model</h1>
+        <h2>Upload Video File:</h2>
+		<input
+			formControlName="file"
+			id="input_file"
+			name="input_file"
+			type="file"
+			class="form-control"
+			(change)="onFileChange($event)"
+			required>
+		<div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+			<div *ngIf="f.file.errors!.required">File is required</div>
+		</div>
+		<div>
+        	<button mat-raised-button color='primary' [disabled]="upForm.invalid" type="submit">Submit</button>
+		</div>
+    </form>
+
+	<div *ngIf="submitted_HO"
+		fxLayout="column"
+		fxLayoutAlign="center center">
+		<br>
+		<h3>Video Metrics:</h3>
+		<!-- Interaction is determined by model response > 80%. -->
+		<div *ngIf="response_received_HO; else loading">
+			<table id="handObjInt">
+				<tr>
+					<th></th>
+					<th *ngFor="let label of HO_labels">
+						{{HO_labelmap[label]}}
+					</th>
+				</tr>
+
+				<tr *ngFor="let state of state_map">
+					<th>{{state_map2[state]}}</th>
+					<td *ngFor="let label of HO_labels">
+						{{predictions_HO[label][state]}}
+					</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+</section>
+
+<ng-template #loading>
+	<img src="../../assets/loading_spinner.gif">
+	<h4>Loading...</h4>
+</ng-template>

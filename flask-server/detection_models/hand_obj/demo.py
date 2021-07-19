@@ -227,7 +227,10 @@ if __name__ == '__main__':
     max_per_image = 100
     thresh_hand = args.thresh_hand 
     thresh_obj = args.thresh_obj
-    vis = args.vis
+    if (type(args.vis) != bool):
+      vis = args.vis.lower() in ['true']  # Convert string to boolean
+    else:
+      vis = args.vis
 
     # print(f'thresh_hand = {thresh_hand}')
     # print(f'thnres_obj = {thresh_obj}')
@@ -323,9 +326,9 @@ if __name__ == '__main__':
                       box_deltas = box_deltas.view(-1, 4) * torch.FloatTensor(cfg.TRAIN.BBOX_NORMALIZE_STDS).cuda() \
                                 + torch.FloatTensor(cfg.TRAIN.BBOX_NORMALIZE_MEANS).cuda()
                   else:
-                      box_deltas = box_deltas.view(-1, 4) * torch.FloatTensor(cfg.TRAIN.BBOX_NORMALIZE_STDS) \
+                      box_deltas = box_deltas.view(-1,4) * torch.FloatTensor(cfg.TRAIN.BBOX_NORMALIZE_STDS) \
                                 + torch.FloatTensor(cfg.TRAIN.BBOX_NORMALIZE_MEANS)
-                  box_deltas = box_deltas.view(1, -1, 4 * len(pascal_classes))
+                  box_deltas = box_deltas.view(1, -1,  4 * len(pascal_classes))
 
             pred_boxes = bbox_transform_inv(boxes, box_deltas, 1)
             pred_boxes = clip_boxes(pred_boxes, im_info.data, 1)

@@ -1,3 +1,6 @@
 [submodule "darkflow"]
 	path = flask-server/detection_models/darkflow
 	url = https://github.com/thtrieu/darkflow
+[submodule "hand_object_detector"]
+	path = flask-server/detection_models/hand_obj/hand_object_detector
+	url = https://github.com/ddshan/hand_object_detector
