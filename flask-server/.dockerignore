@@ -1,0 +1,10 @@
+# DOCKER IGNORE FILE FOR FLASK_SERVER
+_pycache_
+test.py
+upload_temp/*
+test_dump
+detection_models/hand_obj/_pycache_
+detection_models/hand_obj/lib/*/_pycache_
+detection_models/hand_obj/lib/*/*/_pycache_
+detection_models/hand_obj/lib/build/temp*
+log*

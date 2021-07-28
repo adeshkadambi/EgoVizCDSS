@@ -1,6 +1,6 @@
 # Flask API for YOLOv2 + darkflow hand detection model. 
 from flask import Flask, json, jsonify, request, redirect, url_for
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import os, cv2, subprocess, sys
 from werkzeug.utils import secure_filename
 from PIL import Image
@@ -18,7 +18,17 @@ from detection_models.hand_obj.lib.model.utils.config import cfg, cfg_from_file
 from detection_models.hand_obj.lib.model.utils.blob import im_list_to_blob
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, allow_headers=['Content-Type', 'Access-Control-Allow-Origin',
+                         'Access-Control-Allow-Headers', 'Access-Control-Allow-Methods'])
+@app.after_request
+def apply_caching(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Credentials"] = "true"
+    response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST"
+    response.headers["Access-Control-Allow-Headers"] = \
+        "Access-Control-Allow-Headers,  Access-Control-Allow-Origin, Origin,Accept, " + \
+        "X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
+    return response
 
 # == Global Variables ==
 FRAMERATE = 2
@@ -196,6 +206,8 @@ if 'pooling_mode' in model.keys():
 def home():
 	return "Welcome to the app"
 
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+
 # Upload + predict function
 @app.route("/uploadpredictHO/", methods=['GET', 'POST'])
 def UploadPredict():
@@ -219,6 +231,7 @@ def UploadPredict():
 		.filter('fps', fps=FRAMERATE)
 		.output('pipe:', format='rawvideo', pix_fmt='rgb24')
 		.run(quiet=True, capture_stdout=True)
+		# .run(capture_stdout=True)
 	)
 	video = (
 		np
@@ -330,10 +343,12 @@ def UploadPredict():
 	# Delete the temporary saved file
 	os.remove(filepath)
 
-	# return [jsonify(l_int), jsonify(r_int), jsonify(l_dur), jsonify(r_dur), jsonify(l_num), jsonify(r_num)]
-	# return str([l_int, r_int, l_dur, r_dur, l_num, r_num])
-	return jsonify({"l_int":l_int, "r_int":r_int, "l_dur":l_dur, "r_dur":r_dur, "l_num":l_num, "r_num":r_num})
+	response = jsonify({"l_int":l_int, "r_int":r_int, "l_dur":l_dur, "r_dur":r_dur, "l_num":l_num, "r_num":r_num})
+	# Allow Cross-origin request (request from same IP)
+	response.headers.add('Access-Control-Allow-Origin', '*')
+	return response
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=True, port=5000, host="0.0.0.0")
+	# app.run(debug=True, port=5000)

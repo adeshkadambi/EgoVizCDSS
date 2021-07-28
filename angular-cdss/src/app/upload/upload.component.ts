@@ -55,7 +55,7 @@ export class UploadComponent {
   response_received_DF: boolean = false;
 
   predictions_HO: HandObjInt;
-  predictionUrl_HO: string = "http://127.0.0.1:5000/uploadpredictHO/"
+  predictionUrl_HO: string = "http://localhost:5000/uploadpredictHO/"; 
   submitted_HO: boolean = false;
   response_received_HO: boolean = false;
 
