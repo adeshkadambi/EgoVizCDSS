@@ -3,6 +3,7 @@ _pycache_
 test.py
 upload_temp/*
 test_dump
+functions/_pycache_
 detection_models/hand_obj/_pycache_
 detection_models/hand_obj/lib/*/_pycache_
 detection_models/hand_obj/lib/*/*/_pycache_
