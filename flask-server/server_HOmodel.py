@@ -40,6 +40,7 @@ ALLOWED_EXTENSIONS = {'mp4', 'avi'}
 def home():
 	return "Welcome to the app"
 
+# FIXME: There may be some security concerns with origin='*'
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 
 # Upload + predict function
