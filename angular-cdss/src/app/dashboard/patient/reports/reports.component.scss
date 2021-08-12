@@ -1,8 +1,27 @@
 .patient-card {
-    padding:30px;
+    padding: 30px;
+    height: 100%;
 }
 
 mat-card {
     margin: 10px;
     max-height: 300px;
 }
+
+mat-card-title {
+    font-size: medium;
+}
+
+.outline {
+    border-style: solid;
+    border-width: thin;
+}
+
+h2 {
+    margin-block-start: 15px;
+    margin-block-end: 15px;
+}
+
+// .mat-card-container {
+//     min-height: calc()
+// }

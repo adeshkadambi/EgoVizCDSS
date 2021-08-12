@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from './user.model';
 import { AuthData } from './auth-data.model';
 import { Injectable } from '@angular/core';
@@ -11,7 +12,7 @@ export class AuthService {
     authChange = new Subject<boolean>();
     private isAuthenticated = false;
 
-    constructor(private router:Router, private afAuth:AngularFireAuth) {
+    constructor(private router:Router, private afAuth:AngularFireAuth, private snackbar:MatSnackBar) {
 
     }
 
@@ -22,7 +23,7 @@ export class AuthService {
                 this.authSuccess();
             })
             .catch(error => {
-                console.log(error);
+                this.snackbar.open(error.message, null, {duration: 3000});
             });
     }
 
@@ -34,7 +35,7 @@ export class AuthService {
                 this.isAuthenticated = true;
             })
             .catch(error => {
-                console.log(error);
+                this.snackbar.open(error.message, null, {duration: 3000});
             });
     }
 

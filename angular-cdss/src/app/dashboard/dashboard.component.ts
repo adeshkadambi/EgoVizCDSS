@@ -1,4 +1,5 @@
-import { Patient } from './patient.model';
+import { test_val } from './patient/reports/data';
+import { Patient, LineGraph } from './patient.model';
 import { PatientService } from './patient.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -14,6 +15,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   patientSub: Subscription;
   currentPatient:Patient;
 
+  dataSub: Subscription;
+  propData: LineGraph[];
+
   constructor(private patientService:PatientService) {}
 
   ngOnInit(): void {
@@ -22,14 +26,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
         if (patient) {
           this.selectedPatient = true;
           this.currentPatient = this.patientService.getCurrent();
+          this.dataSub = this.patientService.propLoaded.subscribe(props => {
+            this.propData = props;
+            console.log(this.propData);
+          });
         } else {
           this.selectedPatient = false;
+          this.propData = null;
+          console.log(this.propData);
         }
     });
   }
 
   checkPatient(){
-    console.log(this.patientService.getCurrent());
+    this.patientService.newData(test_val);
   }
 
   goBack(){

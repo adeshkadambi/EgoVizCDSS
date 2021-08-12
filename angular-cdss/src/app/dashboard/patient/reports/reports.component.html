@@ -1,21 +1,59 @@
-<section class="patient-card" fxLayout fxLayoutAlign="center">
-    <mat-card fxFlex="700px">
-        <mat-card-title fxLayoutAlign="center">Proportion of interaction over total recording time</mat-card-title>
-        <mat-card-content fxLayoutAlign="center">
-            <ngx-charts-line-chart
-            [view]="view"
-            [scheme]="colorScheme"
-            [legend]="legend"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxis]="xAxis"
-            [yAxis]="yAxis"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            [timeline]="timeline"
-            [results]="multi"
-            >
-            </ngx-charts-line-chart>
-        </mat-card-content>
-    </mat-card>
+<section class="patient-card" fxLayout fxLayout="column">
+    <h2>HAND QUANTITY USAGE REPORT</h2>
+    <div class="mat-card-container" fxlayout fxlayout="row">
+        <mat-card class="mat-elevation-z0 outline" fxFlex="30">
+            <mat-card-title fxLayoutAlign="center">Proportion Interactions / Time</mat-card-title>
+            <mat-card-content fxLayoutAlign="center">
+                <ngx-charts-line-chart
+                [scheme]="colorScheme"
+                [legend]="false"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxis]="xAxis"
+                [yAxis]="yAxis"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel"
+                [timeline]="timeline"
+                [results]="propData"
+                >
+                </ngx-charts-line-chart>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="mat-elevation-z0 outline" fxFlex="30">
+            <mat-card-title fxLayoutAlign="center">Number of Interactions / Hour</mat-card-title>
+            <mat-card-content fxLayoutAlign="center">
+                <ngx-charts-line-chart
+                [scheme]="colorScheme"
+                [legend]="false"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxis]="xAxis"
+                [yAxis]="yAxis"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel"
+                [timeline]="timeline"
+                [results]="multi"
+                >
+                </ngx-charts-line-chart>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="mat-elevation-z0 outline" fxFlex="30">
+            <mat-card-title fxLayoutAlign="center">Duration of Interactions (Secs)</mat-card-title>
+            <mat-card-content fxLayoutAlign="center">
+                <ngx-charts-line-chart
+                [scheme]="colorScheme"
+                [legend]="false"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxis]="xAxis"
+                [yAxis]="yAxis"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel"
+                [timeline]="timeline"
+                [results]="multi"
+                >
+                </ngx-charts-line-chart>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </section>

@@ -1,6 +1,8 @@
+import { LineGraph } from './../../patient.model';
+import { Subscription } from 'rxjs';
 import { PatientService } from './../../patient.service';
 import { multi } from './data';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -9,7 +11,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss']
 })
-export class ReportsComponent implements OnInit {
+export class ReportsComponent implements OnInit, OnDestroy {
+
+  dataSub: Subscription;
+  propData: LineGraph[];
 
   multi: any[];
   view: any[] = [700, 300];
@@ -22,12 +27,12 @@ export class ReportsComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Day';
-  yAxisLabel: string = 'Proportion (%) of Interation';
-  timeline: boolean = true;
+  xAxisLabel: string = 'Date';
+  yAxisLabel: string = 'Percentage (%)';
+  timeline: boolean = false;
 
   colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    domain: ['#EB5757', '#2F80ED']
   };
 
 
@@ -36,6 +41,15 @@ export class ReportsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dataSub = this.patientService.propLoaded.subscribe(props => {
+      this.propData = props;
+    });
+
+    console.log(this.propData);
+  }
+
+  ngOnDestroy() {
+    this.dataSub.unsubscribe();
   }
 
 }
