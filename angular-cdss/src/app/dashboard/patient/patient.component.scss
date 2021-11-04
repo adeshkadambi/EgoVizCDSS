@@ -1,7 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
 .patient-card {
-    padding:30px;
+    display: flex;
+    flex-flow: row wrap;
+    place-content: stretch center;
+    padding: 30px;
 }
 
 mat-card {
+    flex-basis: 300px;
+    display: flex;
+    flex-direction: column;
     margin: 10px;
+
+    &-actions {
+        height: min-content;
+        margin-top: auto;
+
+        display: flex;
+        justify-content: flex-end;
+
+        text-transform: uppercase;
+    }
 }

@@ -1,8 +1,297 @@
+// variables
+// when browser width <= $vertical-breakpoint, all items will vertically stack + be scrolled
+$vertical-breakpoint: 800px; 
+
+$heading-text: #263238;
+$notes-text: #607D8B;
+$subheading-text: #607D8B;
+$date-text: #212B30;
+$title-text: black;
+
+// selectors
+* {
+    box-sizing: border-box;
+    
+    font-family: 'IBM Plex Sans', sans-serif;
+
+    // make fonts appear closer to figma's designs
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+    text-rendering: optimizeLegibility;
+}
+
 .patient-card {
-    padding:30px;
+    display: flex; 
+    flex-direction: column;
+
+    margin: auto;
+    padding: 30px 30px 50px 30px;
+    height: 100%;
+    width: min(1920px, 100%);
+}
+
+.top-row {
+    display: flex;
+    flex: none;
+    width: 100%;
+}
+
+.title {
+    color: $title-text;
+    font-family: "Roboto", "Helvetica Neue", sans-serif; 
+    font-size: 24px;
+    font-weight: 500;
+}
+
+h2 {
+    margin-block-start: 15px;
+    margin-block-end: 15px;
+}
+
+
+.btn {
+    height: max-content;
+    padding: 8px 0;
+    margin: 0;
+    
+    display: flex;
+    align-items: center;
+    
+    outline: none;
+    background-color: #3f51b5;
+    border-radius: 25px;
+
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+    font-size: 16;
+    font-weight: 500;
+    color: white;
+    text-transform: uppercase;
+
+    &:hover {
+        color: lightgray;
+        cursor: pointer;
+    }
+
+    & > * {
+        padding: 0 5px;
+    }
+
+    &::before {
+        content: "";
+        padding-left: 20px;
+    }
+
+    &::after {
+        content: "";
+        padding-right: 20px;
+    }
+
+    &-next {
+        margin: auto 0 auto auto;
+    }
+
+    &-prev {
+        margin: auto auto auto 0;
+    }
+}
+
+.patient-notes {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        flex: none;
+    }
+
+    &__text {
+        flex: 1 0 0;
+        overflow-y: auto;
+    }
+
+    &__line {
+        margin-top: 0.5rem;
+        letter-spacing: 0.1px;
+
+        &:first-child {
+            margin-top: 1rem;
+        }
+    }
+
+    &__date {
+        color: $date-text;
+    }
+
+    &__note {
+        color: $notes-text;
+    }
+}
+
+.middle-row {
+    display: flex;
+    flex: 1 1 0%;
+    width: 100%;
+
+    &__el {
+        flex: 1 1 100%;
+        max-width: calc(100% / 2);
+    }
+}
+
+.data-legend {
+    flex: none;
+    display: grid;
+    grid-auto-flow: column;
+    font-size: 18px;
+
+    &--inline {
+        margin-left: 20%;
+    }
+
+    &__series {
+        &--inline {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__color {
+        background-color: lavender;
+        height: 1em;
+        width: 1em;
+
+        &--circle {
+            border-radius: 50%;
+        }
+
+        &--inline {
+            display: inline-block;
+        }
+    }
+
+    &__label {
+        padding-top: 0.5em;
+        color: $heading-text;
+
+        &--inline {
+            padding-top: 0;
+            margin-left: 1em;
+        }
+    }
+}
+
+.bottom-row {
+    display: flex;
+    flex: 1 1 0%;
+    width: 100%;
+
+    &__el {
+        flex: 1 1 100%;
+        max-width: calc(100% / 3);
+    }
+}
+
+.header {
+    &-center {
+        display: flex;
+        place-content: center;
+        transform: translateX(1rem); // move right to adjust for y-axis label
+    }
+
+    &-right {
+        display: flex;
+        place-content: flex-end;
+    }
+}
+
+.posture-use {
+    &-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+
+    &-wrapper {
+        flex-grow: 1;
+    }
 }
 
 mat-card {
-    margin: 10px;
-    max-height: 300px;
+    // push margin + padding space -> padding
+    // to let height: 100% size the entire element
+    margin: 0;
+    padding: calc(1rem + 10px);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    &-header {
+        flex: none;
+    }
+
+    &-title {
+        font-size: 20px;
+        font-weight: 400;
+        color: $heading-text;
+        letter-spacing: 0.2px;
+    }
+
+    &-subtitle {
+        margin-bottom: 0.5rem;
+    
+        font-size: 16px;
+        font-weight: 400;
+        color: $subheading-text;
+        letter-spacing: 0;
+    }
+
+    &-content {
+        flex-grow: 1;
+        display: flex;
+        place-content: center;
+    }
+}
+
+
+// specifying a px value for chart dimensions seems to make it reactive
+ngx-charts-bar-vertical,
+ngx-charts-pie-chart,
+ngx-charts-line-chart,
+ngx-charts-bar-vertical-stacked {
+    height: 300px;
+}
+
+@media screen and (max-width: $vertical-breakpoint) {
+    .patient-card,
+    .bottom-row,
+    .patient-notes {
+        display: block;
+    }
+
+    
+    .middle-row__el,
+    .bottom-row__el {
+        max-width: 100%;
+    }
+    
+    .middle-row {
+        flex-wrap: wrap-reverse;
+    }
+
+    .patient-notes__text {
+        min-height: min-content;
+        overflow-y: hidden;
+    }
+
+    .header-left,
+    .header-center {
+        display: flex;
+        place-content: flex-start;
+        transform: translateX(1rem);
+    }
+
+    mat-card {
+        padding-top: 0.5rem;
+    }
 }

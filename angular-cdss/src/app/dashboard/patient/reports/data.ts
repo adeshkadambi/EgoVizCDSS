@@ -1,126 +1,31 @@
-export var multi = [
+export const test_val = {
+    "name": new Date('June 6, 2021'),
+    "value": Math.floor(Math.random()*100)
+}
+
+export const multi = [
     {
       "name": "Right Hand",
       "series": [
         {
-            "name": "1",
-            "value": 20
+            "name": new Date('June 1, 2021'),
+            "value": Math.floor(Math.random()*100)
         },
         {
-            "name": "2",
-            "value": 24
+            "name": new Date('June 3, 2021'),
+            "value": Math.floor(Math.random()*100)
         },
         {
-            "name": "3",
-            "value": 35
+            "name": new Date('June 5, 2021'),
+            "value": Math.floor(Math.random()*100)
         },
         {
-            "name": "4",
-            "value": 40
+            "name": new Date('June 7, 2021'),
+            "value": Math.floor(Math.random()*100)
         },
         {
-            "name": "5",
-            "value": 39
-        },
-        {
-            "name": "6",
-            "value": 50
-        },
-        {
-            "name": "7",
-            "value": 48
-        },
-        {
-            "name": "8",
-            "value": 57
-        },
-        {
-            "name": "9",
-            "value": 60
-        },
-        {
-            "name": "10",
-            "value": 59
-        },
-        {
-            "name": "11",
-            "value": 62
-        },
-        {
-            "name": "12",
-            "value": 62
-        },
-        {
-            "name": "13",
-            "value": 63
-        },
-        {
-            "name": "14",
-            "value": 58
-        },
-        {
-            "name": "15",
-            "value": 56
-        },
-        {
-            "name": "16",
-            "value": 57
-        },
-        {
-            "name": "17",
-            "value": 58
-        },
-        {
-            "name": "18",
-            "value": 60
-        },
-        {
-            "name": "19",
-            "value": 60
-        },
-        {
-            "name": "20",
-            "value": 62
-        },
-        {
-            "name": "21",
-            "value": 63
-        },
-        {
-            "name": "22",
-            "value": 62
-        },
-        {
-            "name": "23",
-            "value": 61
-        },
-        {
-            "name": "24",
-            "value": 60
-        },
-        {
-            "name": "25",
-            "value": 68
-        },
-        {
-            "name": "26",
-            "value": 65
-        },
-        {
-            "name": "27",
-            "value": 70
-        },
-        {
-            "name": "28",
-            "value": 72
-        },
-        {
-            "name": "29",
-            "value": 74
-        },
-        {
-            "name": "30",
-            "value": 80
+            "name": new Date('June 9, 2021'),
+            "value": Math.floor(Math.random()*100)
         }
       ]
     },
@@ -129,126 +34,268 @@ export var multi = [
       "name": "Left Hand",
       "series": [
         {
-            "name": "1",
-            "value": 15
+            "name": new Date('June 1, 2021'),
+            "value": Math.floor(Math.random()*100)
         },
         {
-            "name": "2",
-            "value": 21
+            "name": new Date('June 3, 2021'),
+            "value": Math.floor(Math.random()*100)
         },
         {
-            "name": "3",
-            "value": 37
+            "name": new Date('June 5, 2021'),
+            "value": Math.floor(Math.random()*100)
         },
         {
-            "name": "4",
-            "value": 45
+            "name": new Date('June 7, 2021'),
+            "value": Math.floor(Math.random()*100)
         },
         {
-            "name": "5",
-            "value": 35
-        },
-        {
-            "name": "6",
-            "value": 20
-        },
-        {
-            "name": "7",
-            "value": 30
-        },
-        {
-            "name": "8",
-            "value": 67
-        },
-        {
-            "name": "9",
-            "value": 30
-        },
-        {
-            "name": "10",
-            "value": 40
-        },
-        {
-            "name": "11",
-            "value": 40
-        },
-        {
-            "name": "12",
-            "value": 50
-        },
-        {
-            "name": "13",
-            "value": 40
-        },
-        {
-            "name": "14",
-            "value": 60
-        },
-        {
-            "name": "15",
-            "value": 50
-        },
-        {
-            "name": "16",
-            "value": 29
-        },
-        {
-            "name": "17",
-            "value": 30
-        },
-        {
-            "name": "18",
-            "value": 30
-        },
-        {
-            "name": "19",
-            "value": 60
-        },
-        {
-            "name": "20",
-            "value": 65
-        },
-        {
-            "name": "21",
-            "value": 66
-        },
-        {
-            "name": "22",
-            "value": 67
-        },
-        {
-            "name": "23",
-            "value": 40
-        },
-        {
-            "name": "24",
-            "value": 50
-        },
-        {
-            "name": "25",
-            "value": 55
-        },
-        {
-            "name": "26",
-            "value": 61
-        },
-        {
-            "name": "27",
-            "value": 71
-        },
-        {
-            "name": "28",
-            "value": 69
-        },
-        {
-            "name": "29",
-            "value": 78
-        },
-        {
-            "name": "30",
-            "value": 81
+            "name": new Date('June 9, 2021'),
+            "value": Math.floor(Math.random()*100)
         }
       ]
     }
-  ];
+];
+
+export const minutes_recorded = [
+    {
+        "name": "06/01",
+        "value": 32,
+    },
+    {
+        "name": "06/03",
+        "value": 256,
+    },
+    {
+        "name": "06/04",
+        "value": 144,
+    },
+    {
+        "name": "06/05",
+        "value": 168,
+    },
+    {
+        "name": "06/07",
+        "value": 248,
+    },
+    {
+        "name": "06/09",
+        "value": 96,
+    },
+    {
+        "name": "06/10",
+        "value": 144,
+    },
+    {
+        "name": "06/12",
+        "value": 168,
+    },
+    {
+        "name": "06/13",
+        "value": 32,
+    },
+    {
+        "name": "06/14",
+        "value": 256,
+    },
+    {
+        "name": "06/16",
+        "value": 144,
+    },
+    {
+        "name": "06/17",
+        "value": 168,
+    },
+    {
+        "name": "06/18",
+        "value": 248,
+    },
+    {
+        "name": "06/20",
+        "value": 96,
+    },
+    {
+        "name": "06/23",
+        "value": 144,
+    },
+    {
+        "name": "06/26",
+        "value": 168,
+    },
+];
+
+export const patient_notes = [
+    {
+        date: new Date(2021, 5, 5),
+        note: "felt pain in my right arm."
+    },
+    {
+        date: new Date(2021, 5, 12),
+        note: "preparing food was more difficult than usual."
+    },
+    {
+        date: new Date(2021, 5, 5),
+        note: "felt pain in my right arm."
+    },
+    {
+        date: new Date(2021, 5, 12),
+        note: "preparing food was more difficult than usual."
+    },
+    {
+        date: new Date(2021, 5, 16),
+        note: "camera stopped recording."
+    },
+    {
+        date: new Date(2021, 5, 5),
+        note: "felt pain in my right arm."
+    },
+    {
+        date: new Date(2021, 5, 12),
+        note: "preparing food was more difficult than usual."
+    },
+    {
+        date: new Date(2021, 5, 16),
+        note: "camera stopped recording."
+    },
+];
+
+export const activity_breakdown = [
+    {
+        "name": "Cook",
+        "value": "50",
+        "extra": {
+            "Top Posture": "Posture 1",
+            "Tenodesis Grasp": "Yes",
+        }
+    },
+    {
+        "name": "Eat",
+        "value": "10",
+        "extra": {
+            "Top Posture": "Posture 2",
+            "Tenodesis Grasp": "No",
+        }
+    },
+    {
+        "name": "Clean",
+        "value": "10",
+        "extra": {
+            "Top Posture": "Posture 3",
+            "Tenodesis Grasp": "No",
+        }
+    },
+    {
+        "name": "Misc",
+        "value": "10",
+        "extra": {
+            "Top Posture": "Posture 4",
+            "Tenodesis Grasp": "Yes",
+        }
+    },
+];
   
+export const posture_use = [
+    {
+      "name": "6/01",
+      "series": [
+        {
+          "name": "Posture 1",
+          "value": 25
+        },
+        {
+          "name": "Posture 2",
+          "value": 25
+        },
+        {
+          "name": "Posture 3",
+          "value": 25
+        },
+        {
+          "name": "Posture 4",
+          "value": 25
+        },
+      ]
+    },
+    {
+      "name": "6/03",
+      "series": [
+        {
+          "name": "Posture 1",
+          "value": 25
+        },
+        {
+          "name": "Posture 2",
+          "value": 20
+        },
+        {
+          "name": "Posture 3",
+          "value": 35
+        },
+        {
+          "name": "Posture 4",
+          "value": 20
+        },
+      ]
+    },
+    {
+      "name": "6/04",
+      "series": [
+        {
+          "name": "Posture 1",
+          "value": 20
+        },
+        {
+          "name": "Posture 2",
+          "value": 20
+        },
+        {
+          "name": "Posture 3",
+          "value": 30
+        },
+        {
+          "name": "Posture 4",
+          "value": 30
+        },
+      ]
+    },
+    {
+      "name": "6/05",
+      "series": [
+        {
+          "name": "Posture 1",
+          "value": 25
+        },
+        {
+          "name": "Posture 2",
+          "value": 35
+        },
+        {
+          "name": "Posture 3",
+          "value": 20
+        },
+        {
+          "name": "Posture 4",
+          "value": 20
+        },
+      ]
+    },
+];
+
+export const postures = [
+  {
+    name: "Posture 1",
+    image: "pretend this is an image",
+  },
+  {
+    name: "Posture 2",
+    image: "pretend this is an image",
+  },
+  {
+    name: "Posture 3",
+    image: "pretend this is an image",
+  },
+  {
+    name: "Posture 4",
+    image: "pretend this is an image",
+  },
+];

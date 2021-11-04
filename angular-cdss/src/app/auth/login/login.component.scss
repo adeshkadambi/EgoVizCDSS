@@ -1,26 +1,38 @@
+:focus {
+    outline: none;
+}
+
 mat-form-field {
     width: 300px;
 }
-
+    
 button {
     margin-top: 20px;
+
+    &:hover, &:focus {
+        color: lightgray;
+    }
 }
 
 .login-form {
     margin-top: 10%;
 }
 
-.navitem {
+a {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 0 16px;
+
     color:black;
-    font-family: Roboto,Helvetica Neue,sans-serif;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
     font-size: 14px;
     font-weight: 500;
 
-    position: relative;
     cursor: pointer;
-    display: inline-block;
     text-decoration: none;
-    margin-top: 10px;
-    padding: 0 16px;
-    overflow: visible;
+
+    &:focus {
+        text-decoration: underline 1px solid black; 
+    }
 }
