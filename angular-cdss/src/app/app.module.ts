@@ -3,6 +3,7 @@ import { AuthService } from './auth/auth.service';
 import { MaterialModule } from './material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -33,7 +34,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     DashboardComponent,
     PatientComponent,
     ReportsComponent,
-    VideosComponent
+    VideosComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
-  providers: [AuthService, PatientService],
+  providers: [AuthService, PatientService, DatePipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

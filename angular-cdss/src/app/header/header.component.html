@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
-    <div>
+    <div class="logo">
         <a [routerLink]="['/']" routerLinkActive="router-link-active" class="navitem-icon">
             <mat-icon>api</mat-icon>
             <span class="nav-cap">EGOVISION</span>
         </a>
     </div>
-    <div fxFlex fxLayout fxLayoutAlign="flex-end">
+    <div class="icons">
         <a *ngIf="!isAuth" [routerLink]="['/signup']" routerLinkActive="router-link-active" class="navitem-icon">
             <mat-icon>person_add</mat-icon>
             <span class="nav-cap">Sign Up</span>

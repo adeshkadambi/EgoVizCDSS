@@ -2,7 +2,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Patient, Data, LineGraph } from './patient.model';
+import { Patient, Data, MultiSeries } from './patient.model';
 
 
 import * as firebase from 'firebase/app';
@@ -20,8 +20,8 @@ export class PatientService {
     private patientList: Patient[] = [];
 
     //fetch proportion
-    propLoaded = new Subject<LineGraph[]>();
-    private propList: LineGraph[] = [];
+    propLoaded = new Subject<MultiSeries<Date>>();
+    private propList: MultiSeries<Date> = [];
 
     constructor(private db:AngularFirestore) {}
 
@@ -65,7 +65,7 @@ export class PatientService {
                 };
             });
         }))
-        .subscribe((props:LineGraph[])=>{
+        .subscribe((props: MultiSeries<Date>)=>{
             this.propList = props;
             this.propLoaded.next([...this.propList]);
         });
@@ -81,7 +81,7 @@ export class PatientService {
         return { ...this.currentPatient };
     }
 
-    newData(data:Data) {
+    newData(data: Data<Date>) {
         this.db
         .collection("patients")
         .doc("J0glR58bwyAIzQFZDldn")

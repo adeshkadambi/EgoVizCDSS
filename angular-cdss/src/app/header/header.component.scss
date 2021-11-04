@@ -1,9 +1,21 @@
+mat-toolbar {
+    display: flex;
+}
+
+.logo {
+    margin-right: auto;
+}
+
+.icons {
+    display: flex;
+}
+
 .navitem {
     color: white;
     font-family: Roboto,Helvetica Neue,sans-serif;
     font-size: 14px;
     font-weight: 500;
-
+    
     position: relative;
     cursor: pointer;
     display: inline-block;
@@ -13,9 +25,18 @@
     overflow: visible;
 }
 
-a.navitem:hover, a.navitem:active, a.navitem-icon:hover, a.navitem-icon:active {
+:focus {
+    outline: none;
+}
+
+a.navitem:hover, 
+a.navitem:active, 
+a.navitem-icon:hover,
+a.navitem-icon:focus, 
+a.navitem-icon:active {
     color: lightgray;
 }
+
 
 .nav-items {
     list-style: none;

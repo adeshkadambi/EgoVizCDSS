@@ -5,12 +5,17 @@ export interface Patient {
     doctor: string;
 }
 
-export interface Data {
-    name: Date;
-    value: number;
+export interface Data<K> {
+    "name": K;
+    "value": number;
+    "extra"?: Object;
 }
 
-export interface LineGraph {
-    name: string;
-    series: Data[];
+export interface MultiDataPoints<K> {
+    "name": string;
+    "series": Data<K>[]
 }
+
+export type MultiSeries<K> = MultiDataPoints<K>[];
+
+export type SingleSeries<K> = Data<K>[];

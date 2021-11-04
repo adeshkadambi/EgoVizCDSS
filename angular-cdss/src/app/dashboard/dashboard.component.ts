@@ -1,5 +1,5 @@
 import { test_val } from './patient/reports/data';
-import { Patient, LineGraph } from './patient.model';
+import { Patient, MultiSeries } from './patient.model';
 import { PatientService } from './patient.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   currentPatient:Patient;
 
   dataSub: Subscription;
-  propData: LineGraph[];
+  propData: MultiSeries<Date>
 
   constructor(private patientService:PatientService) {}
 

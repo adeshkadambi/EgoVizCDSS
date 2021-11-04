@@ -1,59 +1,272 @@
-<section class="patient-card" fxLayout fxLayout="column">
-    <h2>HAND QUANTITY USAGE REPORT</h2>
-    <div class="mat-card-container" fxlayout fxlayout="row">
-        <mat-card class="mat-elevation-z0 outline" fxFlex="30">
-            <mat-card-title fxLayoutAlign="center">Proportion Interactions / Time</mat-card-title>
-            <mat-card-content fxLayoutAlign="center">
-                <ngx-charts-line-chart
-                [scheme]="colorScheme"
-                [legend]="false"
-                [showXAxisLabel]="showXAxisLabel"
-                [showYAxisLabel]="showYAxisLabel"
-                [xAxis]="xAxis"
-                [yAxis]="yAxis"
-                [xAxisLabel]="xAxisLabel"
-                [yAxisLabel]="yAxisLabel"
-                [timeline]="timeline"
-                [results]="propData"
-                >
-                </ngx-charts-line-chart>
-            </mat-card-content>
-        </mat-card>
-        <mat-card class="mat-elevation-z0 outline" fxFlex="30">
-            <mat-card-title fxLayoutAlign="center">Number of Interactions / Hour</mat-card-title>
-            <mat-card-content fxLayoutAlign="center">
-                <ngx-charts-line-chart
-                [scheme]="colorScheme"
-                [legend]="false"
-                [showXAxisLabel]="showXAxisLabel"
-                [showYAxisLabel]="showYAxisLabel"
-                [xAxis]="xAxis"
-                [yAxis]="yAxis"
-                [xAxisLabel]="xAxisLabel"
-                [yAxisLabel]="yAxisLabel"
-                [timeline]="timeline"
-                [results]="multi"
-                >
-                </ngx-charts-line-chart>
-            </mat-card-content>
-        </mat-card>
-        <mat-card class="mat-elevation-z0 outline" fxFlex="30">
-            <mat-card-title fxLayoutAlign="center">Duration of Interactions (Secs)</mat-card-title>
-            <mat-card-content fxLayoutAlign="center">
-                <ngx-charts-line-chart
-                [scheme]="colorScheme"
-                [legend]="false"
-                [showXAxisLabel]="showXAxisLabel"
-                [showYAxisLabel]="showYAxisLabel"
-                [xAxis]="xAxis"
-                [yAxis]="yAxis"
-                [xAxisLabel]="xAxisLabel"
-                [yAxisLabel]="yAxisLabel"
-                [timeline]="timeline"
-                [results]="multi"
-                >
-                </ngx-charts-line-chart>
-            </mat-card-content>
-        </mat-card>
-    </div>
-</section>
+<ng-container
+    *ngIf="view === 'quantity'; then quantityTemplate; else qualityTemplate"
+>
+</ng-container>
+
+
+<ng-template #quantityTemplate>
+    <section class="patient-card">
+        <div class="top-row">
+            <span class="title">
+                <h2>HAND QUANTITY USAGE REPORT</h2>
+            </span>
+
+            <a
+                class="btn btn-next"
+                (click)="togglePage()"
+            >
+                Next
+            </a>
+        </div>
+    
+        <div class="middle-row">
+            <div class="middle-row__el">
+                <mat-card class="mat-elevation-z0">
+                    <mat-card-header class="header-left">
+                        <mat-card-title>Minutes Recorded Per Day</mat-card-title>
+                        <mat-card-subtitle>Lorem ipsum dolor sit amet.</mat-card-subtitle>
+                    </mat-card-header>
+    
+                    <mat-card-content>
+                        <ngx-charts-bar-vertical
+                            [scheme]="barSettings.scheme"
+                            [legend]="barSettings.legend"
+                            [showXAxisLabel]="barSettings.showXAxisLabel"
+                            [showYAxisLabel]="barSettings.showYAxisLabel"
+                            [xAxis]="barSettings.xAxis"
+                            [yAxis]="barSettings.yAxis"
+                            [xAxisLabel]="barSettings.xAxisLabel"
+                            [yAxisLabel]="barSettings.yAxisLabel"
+                            [showDataLabel]="barSettings.showDataLabel"
+                            [roundEdges]="barSettings.roundEdges"
+                            [results]="minutes_recorded"
+                        >
+                        </ngx-charts-bar-vertical>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+    
+            <div class="middle-row__el">
+                <mat-card class="mat-elevation-z0 patient-notes">
+                    <mat-card-title class="patient-notes__title">Patient Notes</mat-card-title>
+    
+                    <div class="patient-notes__text">
+                        <div *ngFor="let note of patient_notes" class="patient-notes__line">
+                            <span class="patient-notes__date">{{ note.date | date :'MM/dd/yyyy: ' }}</span>
+                            <span class="patient-notes__note">{{ note.note }}</span>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    
+        <div class="bottom-row">
+            <div class="bottom-row__el">
+                <mat-card class="mat-elevation-z0">
+                    <mat-card-header class="header-center">
+                        <mat-card-title>Proportion Interactions / Time</mat-card-title>
+                        <mat-card-subtitle>Lorem ipsum dolor sit amet.</mat-card-subtitle>
+                    </mat-card-header>
+    
+                    <mat-card-content>
+                        <ngx-charts-line-chart
+                            [scheme]="lineSettings.scheme"
+                            [legend]="lineSettings.legend"
+                            [showXAxisLabel]="lineSettings.showXAxisLabel"
+                            [showYAxisLabel]="lineSettings.showYAxisLabel"
+                            [xAxis]="lineSettings.xAxis"
+                            [yAxis]="lineSettings.yAxis"
+                            [xAxisLabel]="lineSettings.xAxisLabel"
+                            [yAxisLabel]="lineSettings.yAxisLabel"
+                            [timeline]="lineSettings.timeline"
+                            [results]="multi"
+                        >
+                        </ngx-charts-line-chart>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+    
+            <div class="bottom-row__el">
+                <mat-card class="mat-elevation-z0">
+                    <mat-card-header class="header-center">
+                        <mat-card-title>Number of Interactions / Hour</mat-card-title>
+                        <mat-card-subtitle>Lorem ipsum dolor sit amet.</mat-card-subtitle>
+                    </mat-card-header>
+    
+                    <mat-card-content>
+                        <ngx-charts-line-chart
+                            [scheme]="lineSettings.scheme"
+                            [legend]="lineSettings.legend"
+                            [showXAxisLabel]="lineSettings.showXAxisLabel"
+                            [showYAxisLabel]="lineSettings.showYAxisLabel"
+                            [xAxis]="lineSettings.xAxis"
+                            [yAxis]="lineSettings.yAxis"
+                            [xAxisLabel]="lineSettings.xAxisLabel"
+                            [yAxisLabel]="lineSettings.yAxisLabel"
+                            [timeline]="lineSettings.timeline"
+                            [results]="multi"
+                        >
+                        </ngx-charts-line-chart>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+    
+            <div class="bottom-row__el">
+                <mat-card class="mat-elevation-z0">
+                    <mat-card-header class="header-center">
+                        <mat-card-title>Duration of Interactions (Secs)</mat-card-title>
+                        <mat-card-subtitle>Lorem ipsum dolor sit amet.</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <ngx-charts-line-chart
+                            [scheme]="lineSettings.scheme"
+                            [legend]="lineSettings.legend"
+                            [showXAxisLabel]="lineSettings.showXAxisLabel"
+                            [showYAxisLabel]="lineSettings.showYAxisLabel"
+                            [xAxis]="lineSettings.xAxis"
+                            [yAxis]="lineSettings.yAxis"
+                            [xAxisLabel]="lineSettings.xAxisLabel"
+                            [yAxisLabel]="lineSettings.yAxisLabel"
+                            [timeline]="lineSettings.timeline"
+                            [results]="multi"
+                        >
+                        </ngx-charts-line-chart>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </section>
+</ng-template>
+
+<ng-template #qualityTemplate>
+    <section class="patient-card">
+        <div class="top-row">
+            <a
+                class="btn btn-prev"
+                (click)="togglePage()"
+            >
+                Prev
+            </a>
+            <span class="title">
+                <h2>HAND QUALITY USAGE REPORT</h2>
+            </span>
+        </div>
+
+        <div class="middle-row">
+            <div class="middle-row__el">
+                <mat-card class="mat-elevation-z0">
+                    <mat-card-header class="header-left">
+                        <mat-card-title>Activity Breakdown</mat-card-title>
+                        <mat-card-subtitle>Lorem ipsum dolor sit amet.</mat-card-subtitle>
+                    </mat-card-header>
+    
+                    <mat-card-content>
+                        <ngx-charts-pie-chart
+                            [scheme]="pieSettings.scheme"
+                            [legend]="pieSettings.legend"
+                            [animations]="pieSettings.animations"
+                            [labels]="pieSettings.showLabels"
+                            [results]="activity_breakdown"
+                        ></ngx-charts-pie-chart>
+                    </mat-card-content>
+                    
+                    <div class="data-legend">
+                        <div 
+                            *ngFor="let series of activity_breakdown; let i = index"
+                            class="data-legend__series"
+                        >
+                            <div 
+                                [style.background-color]="pieSettings.scheme.domain[i]"
+                                class="data-legend__color data-legend__color--circle"
+                            >
+                            </div>
+                            <div class="data-legend__label">{{ activity_breakdown[i].name }}</div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+
+            <div class="middle-row__el">
+                <div class="posture-use-container">
+                    <div class="posture-use-wrapper">
+                        <mat-card class="mat-elevation-z0">
+                            <mat-card-header class="header-right">
+                                <mat-card-title>Left Hand Posture Use Per Day</mat-card-title>
+                            </mat-card-header>
+                            
+                            <div class="data-legend">
+                                <div 
+                                    *ngFor="let posture of postures; let i = index"
+                                    class="data-legend__series data-legend__series--inline"
+                                >
+                                    <div
+                                        [style.background-color]="stackSettings.scheme.domain[i]"
+                                        class="data-legend__color data-legend__color--inline"
+                                    >
+                                    </div>
+                                    <span class="data-legend__label data-legend__label--inline">{{ posture.name }}</span>
+                                </div>
+                            </div>
+
+                            <mat-card-content>
+                                <ngx-charts-bar-vertical-stacked
+                                    [scheme]="stackSettings.scheme"
+                                    [legend]="stackSettings.legend"
+                                    [animations]="stackSettings.animations"
+                                    [xAxis]="stackSettings.xAxis"
+                                    [yAxis]="stackSettings.yAxis"
+                                    [showXAxisLabel]="stackSettings.showXAxisLabel"
+                                    [showYAxisLabel]="stackSettings.showYAxisLabel"
+                                    [xAxisLabel]="stackSettings.xAxisLabel"
+                                    [yAxisLabel]="stackSettings.yAxisLabel"
+                                    [animations]="stackSettings.animations"
+                                    [results]="posture_use"
+                                >
+                                </ngx-charts-bar-vertical-stacked>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+
+                    <div class="posture-use-wrapper">
+                        <mat-card class="mat-elevation-z0">
+                            <mat-card-header class="header-right">
+                                <mat-card-title>Right Hand Posture Use Per Day</mat-card-title>
+                            </mat-card-header>
+                            
+                            <div class="data-legend">
+                                <div 
+                                    *ngFor="let posture of postures; let i = index"
+                                    class="data-legend__series data-legend__series--inline"
+                                >
+                                    <div
+                                        [style.background-color]="stackSettings.scheme.domain[i]"
+                                        class="data-legend__color data-legend__color--inline"
+                                    >
+                                    </div>
+                                    <span class="data-legend__label data-legend__label--inline">{{ posture.name }}</span>
+                                </div>
+                            </div>
+
+                            <mat-card-content>
+                                <ngx-charts-bar-vertical-stacked
+                                    [scheme]="stackSettings.scheme"
+                                    [legend]="stackSettings.legend"
+                                    [animations]="stackSettings.animations"
+                                    [xAxis]="stackSettings.xAxis"
+                                    [yAxis]="stackSettings.yAxis"
+                                    [showXAxisLabel]="stackSettings.showXAxisLabel"
+                                    [showYAxisLabel]="stackSettings.showYAxisLabel"
+                                    [xAxisLabel]="stackSettings.xAxisLabel"
+                                    [yAxisLabel]="stackSettings.yAxisLabel"
+                                    [animations]="stackSettings.animations"
+                                    [results]="posture_use"
+                                >
+                                </ngx-charts-bar-vertical-stacked>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>

@@ -1,8 +1,10 @@
-import { LineGraph } from './../../patient.model';
+import { MultiSeries, SingleSeries } from './../../patient.model';
+import ChartSettings from './charts.model';
 import { Subscription } from 'rxjs';
 import { PatientService } from './../../patient.service';
-import { multi } from './data';
+import { multi, minutes_recorded, patient_notes, activity_breakdown, posture_use, postures } from './data';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -13,38 +15,93 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 })
 export class ReportsComponent implements OnInit, OnDestroy {
 
-  dataSub: Subscription;
-  propData: LineGraph[];
+  view: "quantity" | "quality" = "quantity";
 
-  multi: any[];
-  view: any[] = [700, 300];
+  dataSub: Subscription;
+  propData: MultiSeries<Date>;
+
+  multi: MultiSeries<Date>;
+  minutes_recorded: SingleSeries<number>;
+  patient_notes: Array<{date: Date, note: string}>;
+  activity_breakdown: SingleSeries<string>; // set to Date
+  posture_use: MultiSeries<string>; //set to Date
+  postures: Array<{name: string, image: string}>
 
   // options
-  legend: boolean = true;
-  showLabels: boolean = true;
-  animations: boolean = true;
-  xAxis: boolean = true;
-  yAxis: boolean = true;
-  showYAxisLabel: boolean = true;
-  showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Date';
-  yAxisLabel: string = 'Percentage (%)';
-  timeline: boolean = false;
+  barSettings: ChartSettings = {
+    chartType: "bar",
+    scheme: {
+      domain: ['#d6d6d6']
+    },
+    legend: false,
+    animations: true,
 
-  colorScheme = {
-    domain: ['#EB5757', '#2F80ED']
-  };
+    xAxis: true,
+    yAxis: false,
+    showYAxisLabel: false,
+    showXAxisLabel: true,
+    xAxisLabel: 'Date',
 
-
-  constructor(private patientService:PatientService) { 
-    Object.assign(this, { multi });
+    showDataLabel: true,
+    roundEdges: false,
   }
 
-  ngOnInit(): void {
+  lineSettings: ChartSettings = {
+    chartType: "line",
+    scheme: {
+      domain: ['#EB5757', '#2F80ED']
+    },
+    legend: false,
+    animations: true,
+
+    xAxis: true,
+    yAxis: true,
+    showYAxisLabel: true,
+    showXAxisLabel: true,
+    xAxisLabel: 'Date',
+    yAxisLabel: 'Percentage (%)',
+
+    timeline: false,
+  }
+
+  pieSettings: ChartSettings = {
+    chartType: "pie",
+    scheme: {
+      domain: ['#9B51E0', '#ACB9FF', '#503795', '#000000']
+    },
+    legend: false,
+    animations: true,
+
+    showLabels: false,
+  }
+
+  stackSettings: ChartSettings = {
+    chartType: "stack",
+    scheme: {
+        domain: ["#8ABFF2", "#4F8AD3", "#E3873E", "#FADB7B"]
+    },
+    legend: false,
+    animations: true,
+
+    xAxis: true,
+    yAxis: true,
+    showYAxisLabel: true,
+    showXAxisLabel: true,
+    xAxisLabel: "Date",
+    yAxisLabel: "Percentage (%)",
+
+    showDataLabel: false,
+    roundEdges: false,
+  };
+
+  constructor(private patientService: PatientService, private datePipe: DatePipe) { 
+    Object.assign(this, { multi, minutes_recorded, patient_notes, activity_breakdown, posture_use, postures });
+  }
+
+  ngOnInit() {
     this.dataSub = this.patientService.propLoaded.subscribe(props => {
       this.propData = props;
     });
-
     console.log(this.propData);
   }
 
@@ -52,4 +109,7 @@ export class ReportsComponent implements OnInit, OnDestroy {
     this.dataSub.unsubscribe();
   }
 
+  togglePage = () => {
+    this.view = this.view === "quantity" ? "quality" : "quantity"; 
+  }
 }

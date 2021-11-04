@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~normalize.css';
+@import '~normalize.css/normalize.css';
 
 html, 
-body { 
+body,
+main,
+app-dashboard {
+    display: block; 
     height: 100%;
 }
 
@@ -10,3 +13,27 @@ body {
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
+
+// force header to stay on scroll
+app-header {
+    z-index: 100;
+    position: sticky;
+    top: 0;
+}
+
+// override material UI component styles
+div.mat-tab-body-wrapper {
+    height: 100%;
+}
+
+div.mat-tab-label-active {
+    opacity: 1;
+    color: #3f51b5;
+}
+
+div.mat-tab-label-content {
+    color: inherit;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
