@@ -162,7 +162,7 @@ export const patient_notes = [
 export const activity_breakdown = [
     {
         "name": "Cook",
-        "value": "50",
+        "value": "60",
         "extra": {
             "Top Posture": "Posture 1",
             "Tenodesis Grasp": "Yes",
@@ -186,7 +186,7 @@ export const activity_breakdown = [
     },
     {
         "name": "Misc",
-        "value": "10",
+        "value": "20",
         "extra": {
             "Top Posture": "Posture 4",
             "Tenodesis Grasp": "Yes",
@@ -199,20 +199,16 @@ export const posture_use = [
       "name": "6/01",
       "series": [
         {
-          "name": "Posture 1",
-          "value": 25
+          "name": "Power Grasp",
+          "value": 70
         },
         {
-          "name": "Posture 2",
-          "value": 25
+          "name": "Intermediate",
+          "value": 10
         },
         {
-          "name": "Posture 3",
-          "value": 25
-        },
-        {
-          "name": "Posture 4",
-          "value": 25
+          "name": "Precision Grasp",
+          "value": 20
         },
       ]
     },
@@ -220,19 +216,15 @@ export const posture_use = [
       "name": "6/03",
       "series": [
         {
-          "name": "Posture 1",
-          "value": 25
+          "name": "Power Grasp",
+          "value": 65
         },
         {
-          "name": "Posture 2",
-          "value": 20
+          "name": "Intermediate",
+          "value": 15
         },
         {
-          "name": "Posture 3",
-          "value": 35
-        },
-        {
-          "name": "Posture 4",
+          "name": "Precision Grasp",
           "value": 20
         },
       ]
@@ -241,20 +233,16 @@ export const posture_use = [
       "name": "6/04",
       "series": [
         {
-          "name": "Posture 1",
-          "value": 20
+          "name": "Power Grasp",
+          "value": 45
         },
         {
-          "name": "Posture 2",
-          "value": 20
-        },
-        {
-          "name": "Posture 3",
+          "name": "Intermediate",
           "value": 30
         },
         {
-          "name": "Posture 4",
-          "value": 30
+          "name": "Precision Grasp",
+          "value": 25
         },
       ]
     },
@@ -262,20 +250,16 @@ export const posture_use = [
       "name": "6/05",
       "series": [
         {
-          "name": "Posture 1",
-          "value": 25
+          "name": "Power Grasp",
+          "value": 45
         },
         {
-          "name": "Posture 2",
-          "value": 35
+          "name": "Intermediate",
+          "value": 15
         },
         {
-          "name": "Posture 3",
-          "value": 20
-        },
-        {
-          "name": "Posture 4",
-          "value": 20
+          "name": "Precision Grasp",
+          "value": 40
         },
       ]
     },
@@ -283,19 +267,15 @@ export const posture_use = [
 
 export const postures = [
   {
-    name: "Posture 1",
+    name: "Power Grasp",
     image: "pretend this is an image",
   },
   {
-    name: "Posture 2",
+    name: "Intermediate",
     image: "pretend this is an image",
   },
   {
-    name: "Posture 3",
-    image: "pretend this is an image",
-  },
-  {
-    name: "Posture 4",
+    name: "Precision Grasp",
     image: "pretend this is an image",
   },
 ];
