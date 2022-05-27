@@ -162,7 +162,7 @@ export const patient_notes = [
 export const activity_breakdown = [
     {
         "name": "Cook",
-        "value": "60",
+        "value": "50",
         "extra": {
             "Top Posture": "Posture 1",
             "Tenodesis Grasp": "Yes",
@@ -186,7 +186,7 @@ export const activity_breakdown = [
     },
     {
         "name": "Misc",
-        "value": "20",
+        "value": "10",
         "extra": {
             "Top Posture": "Posture 4",
             "Tenodesis Grasp": "Yes",
@@ -200,15 +200,15 @@ export const posture_use = [
       "series": [
         {
           "name": "Power Grasp",
-          "value": 70
+          "value": 60
         },
         {
           "name": "Intermediate",
-          "value": 10
+          "value": 35
         },
         {
           "name": "Precision Grasp",
-          "value": 20
+          "value": 5
         },
       ]
     },
@@ -217,15 +217,15 @@ export const posture_use = [
       "series": [
         {
           "name": "Power Grasp",
-          "value": 65
+          "value": 50
         },
         {
           "name": "Intermediate",
-          "value": 15
+          "value": 40
         },
         {
           "name": "Precision Grasp",
-          "value": 20
+          "value": 10
         },
       ]
     },
@@ -234,15 +234,15 @@ export const posture_use = [
       "series": [
         {
           "name": "Power Grasp",
-          "value": 45
+          "value": 35
         },
         {
           "name": "Intermediate",
-          "value": 30
+          "value": 20
         },
         {
           "name": "Precision Grasp",
-          "value": 25
+          "value": 45
         },
       ]
     },
@@ -251,15 +251,15 @@ export const posture_use = [
       "series": [
         {
           "name": "Power Grasp",
-          "value": 45
+          "value": 50
         },
         {
           "name": "Intermediate",
-          "value": 15
+          "value": 5
         },
         {
           "name": "Precision Grasp",
-          "value": 40
+          "value": 45
         },
       ]
     },
